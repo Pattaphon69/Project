@@ -16,60 +16,11 @@ export default function HomeScreen({ navigation }) {
     useEffect(() => {
         console.log("Home");
     }, [])
-    const handleSingUp = () => {
-        console.log("handleSingUp");
-        signInWithEmailAndPassword(auth, email, password)
-            .then((userCredential) => {
-                // Signed in 
-                const user = userCredential.user;
-                console.log("user", user);
-                // ...
-            })
-            .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                console.log("errorCode", errorCode);
-                Alert.alert('Error', errorCode, [
-                    {
-                        text: 'Cancel',
-                        onPress: () => console.log('Cancel Pressed'),
-                        style: 'cancel',
-                    },
-                    { text: 'OK', onPress: () => console.log('OK Pressed') },
-                ]);
-            });
-    };
+
     return (
         <SafeAreaView style={{ flex: 1 }}>
+            <Text>Home</Text>
 
-            <KeyboardAvoidingView
-                behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-                style={{ flex: 1 }}>
-                <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-                    <View style={{ flex: 1 }}>
-                        {/* <StatusBar style="light" /> */}
-                        <Text style={[styles.h1, {}]}>ee</Text>
-
-                        <View style={{ flex: 1 }}>
-                            <TextInput
-                                placeholder='Email'
-                                style={{ borderColor: 'black', borderWidth: 1, }}
-                                onChangeText={(Text) => setEmail(Text)}
-                            />
-                            <TextInput
-                                placeholder='password'
-                                style={{ borderColor: 'black', borderWidth: 1, }}
-                                onChangeText={(Text) => setPassword(Text)}
-                            />
-                            <TouchableOpacity onPress={() => handleSingUp()} style={{ alignSelf: 'center' }}>
-                                <Text>log in</Text>
-                            </TouchableOpacity>
-                        </View>
-
-
-                    </View>
-                </TouchableWithoutFeedback>
-            </KeyboardAvoidingView>
         </SafeAreaView >
 
     );
